@@ -1,24 +1,33 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {StatusBar} from 'react-native';
 import Club from 'gnjoy/src/screens/Club.js';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Club />
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <NavigationContainer>
+      <StatusBar backgroundColor="#d92027" barStyle="light-content" />
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Club"
+          component={Club}
+          options={{
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: '#2d132c',
+            },
+            headerTintColor: '#ee4540',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
