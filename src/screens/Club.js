@@ -58,8 +58,12 @@ class Club extends Component {
         </View>
         <View style={styles.cardContainer}>
           {this.state.data.map((data, index) => (
-            <TouchableWithoutFeedback>
-              <View style={styles.clubCard} key={index}>
+            <TouchableWithoutFeedback
+              key={index}
+              onPress={() =>
+                this.props.navigation.navigate('ClubInfo', {clubData: data})
+              }>
+              <View style={styles.clubCard}>
                 <Image
                   style={styles.clubLogo}
                   source={{uri: BaseUrl + data.logo}}
@@ -86,8 +90,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#d92027',
     // rgba(17,24,39,0.7)
-    height: 250,
+    height: 200,
     marginTop: 30,
+    position: 'relative',
+    // flex: 1,
     borderBottomLeftRadius: 30,
     borderTopRightRadius: 30,
     alignItems: 'center',
