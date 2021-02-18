@@ -4,8 +4,10 @@ from django.db import models
 
 class club(models.Model):
     club_id = models.AutoField(primary_key = True)
+    logo = models.ImageField(upload_to ='uploads/logos/% Y/% m/% d/', blank=True, null=True)
     name = models.CharField(max_length=100, null=True)
     location = models.CharField(max_length=100, null=True)
+    is_open = models.BooleanField(default=False)
     description = models.TextField(default = 'The club description goes here')
     licence_no = models.CharField(max_length=100, null=True)
     timestamp = models.DateTimeField(auto_now_add=True, null=True)

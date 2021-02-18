@@ -4,7 +4,7 @@ from .models import club, table, event, foods_menu, drinks_menu, food, drink
 class ClubSerializer(serializers.ModelSerializer):
   class Meta:
     model = club
-    fields = ('club_id', 'name', 'location', 'description', 'licence_no', 'timestamp')
+    fields = ('club_id', 'name', 'location', 'logo', 'is_open', 'description', 'licence_no', 'timestamp')
 
 class TableSerializer(serializers.ModelSerializer):
   class Meta:

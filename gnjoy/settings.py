@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +27,12 @@ SECRET_KEY = '1g8y028lfznt8ym%b1(j6y(io2gme@rhp%=-h=%77s-b=2u_8k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.0.101',
+]
 
 
-# Application definition
+# Applicatio
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -137,3 +141,7 @@ CORS_ORIGIN_REGEX_WHITELIST = [
 ]
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR)
+
+MEDIA_URL = '/media/'

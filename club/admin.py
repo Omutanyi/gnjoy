@@ -3,7 +3,7 @@ from .models import club, table, event, foods_menu, drinks_menu, food, drink
 
 
 class ClubAdmin(admin.ModelAdmin): 
-  list_display = ('club_id', 'name', 'location', 'description', 'licence_no', 'timestamp')
+  list_display = ('club_id', 'name', 'location','logo', 'is_open', 'description', 'licence_no', 'timestamp')
 
 class TableAdmin(admin.ModelAdmin): 
   list_display = ('table_id', 'table_name', 'club', 'seats', 'taken')
