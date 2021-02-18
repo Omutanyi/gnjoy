@@ -10,10 +10,34 @@ import {
   Image,
   TouchableWithoutFeedback,
 } from 'react-native';
+import axios from 'axios';
 
 const {width: WIDTH} = Dimensions.get('window');
+const BaseUrl = 'http://192.168.0.101:8000';
 
 class Club extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: '',
+      loading: false,
+      data: [],
+    };
+  }
+
+  async componentDidMount() {
+    axios
+      .get('http://192.168.0.101:8000/club/')
+      // .then(res => res.json())
+      .then((res) => {
+        const clubs = res.data;
+        this.setState({data: clubs});
+        console.log('clubs...', clubs);
+      })
+      .catch((error) => {
+        console.log('Error fetching doc', error);
+      });
+  }
   render() {
     return (
       <ScrollView style={styles.primaryView}>
@@ -33,46 +57,18 @@ class Club extends Component {
           />
         </View>
         <View style={styles.cardContainer}>
-          <TouchableWithoutFeedback>
-            <View style={styles.clubCard}>
-              <Image
-                style={styles.clubLogo}
-                source={require('/home/javier/final_Project/club/gnjoy/src/screens/assets/pics/club1.jpeg')}
-              />
-              <Text style={styles.cardHeadText}>card</Text>
-              <Text style={styles.cardText}>location</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.clubCard}>
-              <Image
-                style={styles.clubLogo}
-                source={require('/home/javier/final_Project/club/gnjoy/src/screens/assets/pics/clb2.jpeg')}
-              />
-              <Text style={styles.cardHeadText}>card</Text>
-              <Text style={styles.cardText}>location</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.clubCard}>
-              <Image
-                style={styles.clubLogo}
-                source={require('/home/javier/final_Project/club/gnjoy/src/screens/assets/pics/club1.jpeg')}
-              />
-              <Text style={styles.cardHeadText}>card</Text>
-              <Text style={styles.cardText}>location</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.clubCard}>
-              <Image
-                style={styles.clubLogo}
-                source={require('/home/javier/final_Project/club/gnjoy/src/screens/assets/pics/club1.jpeg')}
-              />
-              <Text style={styles.cardHeadText}>card</Text>
-              <Text style={styles.cardText}>location</Text>
-            </View>
-          </TouchableWithoutFeedback>
+          {this.state.data.map((data, index) => (
+            <TouchableWithoutFeedback>
+              <View style={styles.clubCard} key={index}>
+                <Image
+                  style={styles.clubLogo}
+                  source={{uri: BaseUrl + data.logo}}
+                />
+                <Text style={styles.cardHeadText}>{data.name}</Text>
+                <Text style={styles.cardText}>{data.location}</Text>
+              </View>
+            </TouchableWithoutFeedback>
+          ))}
         </View>
       </ScrollView>
     );
@@ -153,9 +149,10 @@ const styles = StyleSheet.create({
   },
   cardHeadText: {
     marginTop: 5,
-    fontWeight: '700',
+    fontWeight: '600',
     fontSize: 16,
     fontFamily: 'Tisa',
+    color: 'red',
   },
   cardText: {
     // marginLeft: 10,
