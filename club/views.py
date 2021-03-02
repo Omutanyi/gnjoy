@@ -95,7 +95,7 @@ class SearchTable(APIView):
         queryset = table.objects.all()
         query = self.kwargs.get('search')
         print('the query is', query)
-        result = queryset.filter(table_name__icontains=query)
+        result = queryset.filter(club__club_id__icontains=query)
         serializer = TableSerializer(result, many=True)
         return Response(serializer.data)
 
