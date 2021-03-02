@@ -19,12 +19,12 @@ class EventSerializer(serializers.ModelSerializer):
 class FoodsMenuSerializer(serializers.ModelSerializer):
   class Meta:
     model = foods_menu
-    fields = ('foods_menu_id', 'title', 'club', 'timestamp')
+    fields = ('foods_menu_id', 'title', 'photo', 'club', 'timestamp')
 
 class DrinksMenuSerializer(serializers.ModelSerializer):
   class Meta:
     model = drinks_menu
-    fields = ('drinks_menu_id', 'title', 'club', 'timestamp')
+    fields = ('drinks_menu_id', 'title', 'photo', 'club', 'timestamp')
 
 class FoodSerializer(serializers.ModelSerializer):
   class Meta:

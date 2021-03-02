@@ -206,6 +206,19 @@ class FoodsMenu(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class SearchFoodsMenu(APIView):
+    @classmethod
+    def get_extra_actions(cls):
+        return []
+
+    def get(self, request, **kwargs):
+        queryset = foods_menu.objects.all()
+        query = self.kwargs.get('search')
+        print('the query is', query)
+        result = queryset.filter(club__club_id__icontains=query)
+        serializer = FoodsMenuSerializer(result, many=True)
+        return Response(serializer.data)
+
 class SingleFoodsMenu(APIView):
 
     @classmethod
@@ -252,6 +265,19 @@ class DrinksMenu(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class SearchDrinksMenu(APIView):
+    @classmethod
+    def get_extra_actions(cls):
+        return []
+
+    def get(self, request, **kwargs):
+        queryset = drinks_menu.objects.all()
+        query = self.kwargs.get('search')
+        print('the query is', query)
+        result = queryset.filter(club__club_id__icontains=query)
+        serializer = DrinksMenuSerializer(result, many=True)
+        return Response(serializer.data)
 
 class SingleDrinksMenu(APIView):
 

@@ -12,10 +12,10 @@ class EventAdmin(admin.ModelAdmin):
   list_display = ('event_id', 'title', 'photo', 'club', 'description', 'timestamp')
 
 class FoodsMenuAdmin(admin.ModelAdmin): 
-  list_display = ('foods_menu_id', 'title', 'club', 'timestamp')
+  list_display = ('foods_menu_id', 'title', 'photo', 'club', 'timestamp')
 
 class DrinksMenuAdmin(admin.ModelAdmin): 
-  list_display = ('drinks_menu_id', 'title', 'club', 'timestamp')
+  list_display = ('drinks_menu_id', 'title', 'photo', 'club', 'timestamp')
 
 class FoodAdmin(admin.ModelAdmin): 
   list_display = ('food_id', 'name', 'photo', 'menu', 'description', 'price', 'timestamp')

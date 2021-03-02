@@ -39,6 +39,7 @@ class event(models.Model):
 class foods_menu(models.Model):
     foods_menu_id = models.AutoField(primary_key = True)
     title = models.CharField(max_length=20, null=True)
+    photo = models.ImageField(upload_to ='uploads/% Y/% m/% d/', blank=True, null=True)
     club = models.ForeignKey(club, on_delete = models.CASCADE, null=True)
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -48,6 +49,7 @@ class foods_menu(models.Model):
 class drinks_menu(models.Model):
     drinks_menu_id = models.AutoField(primary_key = True)
     title = models.CharField(max_length=20, null=True)
+    photo = models.ImageField(upload_to ='uploads/% Y/% m/% d/', blank=True, null=True)
     club = models.ForeignKey(club, on_delete = models.CASCADE, null=True)
     timestamp = models.DateTimeField(auto_now_add=True, null=True)
 
