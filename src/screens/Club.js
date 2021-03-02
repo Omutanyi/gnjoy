@@ -32,7 +32,7 @@ class Club extends Component {
       .then((res) => {
         const clubs = res.data;
         this.setState({data: clubs});
-        console.log('clubs...', clubs);
+        // console.log('clubs...', clubs);
       })
       .catch((error) => {
         console.log('Error fetching doc', error);

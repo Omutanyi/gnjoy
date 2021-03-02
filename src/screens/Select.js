@@ -21,11 +21,15 @@ class Select extends Component {
 
   proceed = () => {
     //proceed
-    this.props.navigation.navigate('Gnjoy');
+    // console.log('table select ...', this.state.table);
+    this.props.navigation.navigate('Gnjoy', {
+      params: {tableData: this.state.table, clubData: this.state.club},
+      screen: 'Drinks',
+    });
   };
 
   render() {
-    console.log('club', this.state.club);
+    // console.log('club', this.state.club);
     return (
       <ScrollView style={styles.primaryView}>
         <View style={styles.descContainer}>
