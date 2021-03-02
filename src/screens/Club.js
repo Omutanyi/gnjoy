@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 
 const {width: WIDTH} = Dimensions.get('window');
-const BaseUrl = 'http://192.168.0.101:8000';
+const BaseUrl = 'http://192.168.0.16:8000';
 
 class Club extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Club extends Component {
 
   async componentDidMount() {
     axios
-      .get('http://192.168.0.101:8000/club/')
+      .get('http://192.168.0.16:8000/club/')
       // .then(res => res.json())
       .then((res) => {
         const clubs = res.data;
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   clubCard: {
     width: WIDTH / 2 - 20,
-    // backgroundColor: 'white',
+    backgroundColor: 'white',
     marginLeft: 10,
     marginTop: 20,
     padding: 10,
