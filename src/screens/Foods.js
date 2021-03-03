@@ -8,43 +8,29 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import axios from 'axios';
+// import axios from 'axios';
+
+import {connect} from 'react-redux';
+import {fetchFoodsMenu} from 'gnjoy/src/actions/gnjoyActions.js';
 
 const {width: WIDTH} = Dimensions.get('window');
 const BaseUrl = 'http://192.168.0.16:8000';
 
 class Foods extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      club: props.route.params.clubData,
-      table: props.route.params.tableData,
-      menu: [],
-    };
-  }
-
   componentDidMount() {
-    console.log('club drink..', this.state.club);
-    axios
-      .get(
-        `http://192.168.0.16:8000/club/searchfoodsmenu/${this.state.club.club_id}`,
-      )
-      .then((res) => {
-        const menus = res.data;
-        this.setState({menu: menus});
-      })
-      .catch((error) => {
-        console.log('Error fetching doc', error);
-      });
+    this.props.fetchFoodsMenu();
   }
 
   render() {
-    // console.log('club', this.state.club);
     return (
       <ScrollView style={styles.primaryView}>
         <View style={styles.container}>
-          <Text style={styles.headerMainText}>DRINKS MENUS</Text>
-          {this.state.menu.map((data, index) => (
+          <View style={styles.headerView}>
+            <Text style={styles.headerText}>{this.props.club.name}</Text>
+            <Text style={styles.headerText}>{this.props.club.location}</Text>
+            <Text style={styles.headerMainText}>FOOD MENUS</Text>
+          </View>
+          {this.props.menu.map((data, index) => (
             <TouchableWithoutFeedback
               key={index}
               // onPress={() =>
@@ -84,6 +70,25 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
   },
+  headerView: {
+    width: WIDTH,
+    justifyContent: 'center',
+    backgroundColor: '#d92027',
+    // rgba(17,24,39,0.7)
+    height: 'auto',
+    padding: 20,
+    position: 'relative',
+    // flex: 1,
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  headerText: {
+    fontWeight: '300',
+    fontSize: 15,
+    fontFamily: 'Tisa',
+    marginTop: 0,
+    color: '#f4f7c5',
+  },
   card: {
     // backgroundColor: 'rgba(0,0,0,0.5)',
     width: WIDTH - 40,
@@ -108,7 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Tisa',
     marginTop: 10,
-    color: '#d92027',
+    color: 'white',
   },
   descText: {
     fontWeight: '600',
@@ -120,4 +125,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Foods;
+const mapStateToProps = (state) => ({
+  menu: state.foodsMenu.foodsMenu,
+  club: state.club.club,
+});
+
+export default connect(mapStateToProps, {fetchFoodsMenu})(Foods);

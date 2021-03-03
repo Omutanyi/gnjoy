@@ -11,6 +11,7 @@ import Reservation from 'gnjoy/src/screens/Reservation.js';
 import Select from 'gnjoy/src/screens/Select.js';
 import Drinks from 'gnjoy/src/screens/Drinks.js';
 import Foods from 'gnjoy/src/screens/Foods.js';
+import Menu from 'gnjoy/src/screens/Menu.js';
 
 // navigation import
 import {NavigationContainer} from '@react-navigation/native';
@@ -152,6 +153,21 @@ class App extends Component {
                     // }}
                   />
                 ),
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Menu"
+              component={Menu}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
                 headerTitleAlign: 'center',
                 headerTintColor: '#ffcd3c',
                 headerTitleStyle: {

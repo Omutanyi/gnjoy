@@ -1,6 +1,9 @@
 import {combineReducers} from 'redux';
-import proceedReducer from 'gnjoy/src/reducers/proceedReducer.js';
+import gnjoyReducer from 'gnjoy/src/reducers/gnjoyReducer.js';
 
 export default combineReducers({
-  drinksMenu: proceedReducer,
+  drinksMenu: gnjoyReducer,
+  foodsMenu: gnjoyReducer,
+  club: gnjoyReducer,
+  table: gnjoyReducer,
 });

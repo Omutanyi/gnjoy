@@ -8,6 +8,10 @@ import {
   Dimensions,
 } from 'react-native';
 
+//redux imports
+import {connect} from 'react-redux';
+import {enterClub, selectTable} from 'gnjoy/src/actions/gnjoyActions.js';
+
 const {width: WIDTH} = Dimensions.get('window');
 
 class Select extends Component {
@@ -21,7 +25,8 @@ class Select extends Component {
 
   proceed = () => {
     //proceed
-    // console.log('table select ...', this.state.table);
+    this.props.enterClub(this.state.club);
+    this.props.selectTable(this.state.table);
     this.props.navigation.navigate('Gnjoy', {
       params: {tableData: this.state.table, clubData: this.state.club},
       screen: 'Drinks',
@@ -113,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Select;
+export default connect(null, {enterClub, selectTable})(Select);

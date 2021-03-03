@@ -1,1 +1,4 @@
-export const FETCH_MENU = 'FETCH_MENU';
+export const FETCH_DRINKS_MENU = 'FETCH_DRINKS_MENU';
+export const FETCH_FOODS_MENU = 'FETCH_FOODS_MENU';
+export const ENTER_CLUB = 'ENTER_CLUB';
+export const SELECTED_TABLE = 'SELECTED_TABLE';

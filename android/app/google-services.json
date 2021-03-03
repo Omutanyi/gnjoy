@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "80606924732",
+    "project_id": "gnjoy-a2f84",
+    "storage_bucket": "gnjoy-a2f84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80606924732:android:650bda000f3d28eabca5b9",
+        "android_client_info": {
+          "package_name": "com.gnjoy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80606924732-1hoa83mqrcrp31ltdb2nfgif5scm5pq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDulFbrIx5PwcJ7Rcakgbdhw9nOQJjoWu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80606924732-1hoa83mqrcrp31ltdb2nfgif5scm5pq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
