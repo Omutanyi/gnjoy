@@ -20,6 +20,10 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 //icons import
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+// redux import
+import {Provider} from 'react-redux';
+import store from 'gnjoy/src/store.js';
+
 const Stack = createStackNavigator();
 const gnjoyTabs = createMaterialBottomTabNavigator();
 
@@ -57,119 +61,121 @@ class App extends Component {
   };
   render() {
     return (
-      <NavigationContainer>
-        <StatusBar backgroundColor="#d92027" barStyle="light-content" />
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Club"
-            component={Club}
-            options={{
-              headerShown: false,
-              headerStyle: {
-                backgroundColor: '#2d132c',
-              },
-              headerTintColor: '#ee4540',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-            }}
-          />
-          <Stack.Screen
-            name="ClubInfo"
-            component={ClubInfo}
-            options={{
-              // headerShown: false,
-              headerStyle: {
-                backgroundColor: '#d92027',
-              },
-              headerTintColor: '#ffcd3c',
-              headerTitleStyle: {
-                fontWeight: 'normal',
-              },
-            }}
-          />
-          <Stack.Screen
-            name="Table"
-            component={Table}
-            options={{
-              // headerShown: false,
-              headerStyle: {
-                backgroundColor: '#d92027',
-              },
-              headerTintColor: '#ffcd3c',
-              headerTitleStyle: {
-                fontWeight: 'normal',
-              },
-            }}
-          />
-          <Stack.Screen
-            name="Select"
-            component={Select}
-            options={{
-              // headerShown: false,
-              headerStyle: {
-                backgroundColor: '#d92027',
-              },
-              headerTintColor: '#ffcd3c',
-              headerTitleStyle: {
-                fontWeight: 'normal',
-              },
-            }}
-          />
-          <Stack.Screen
-            name="Gnjoy"
-            children={this.createBottomTabs}
-            options={{
-              headerStyle: {
-                backgroundColor: '#d92027',
-              },
-              headerLeft: () => (
-                <Icon
-                  style={[{color: '#ffcd3c', margin: 25}]}
-                  size={20}
-                  name={'navicon'}
-                />
-              ),
-              headerRight: () => (
-                <Icon
-                  style={[{color: '#ffcd3c', margin: 25}]}
-                  size={20}
-                  name={'shopping-basket'}
-                  // onPress={() => {
-                  //   console.log('logout pressed');
-                  //   fire
-                  //     .auth()
-                  //     .signOut()
-                  //     .then(
-                  //       () => this.props.navigation.navigate('Welcome'),
-                  //       console.log('User signed out!'),
-                  //     );
-                  // }}
-                />
-              ),
-              headerTitleAlign: 'center',
-              headerTintColor: '#ffcd3c',
-              headerTitleStyle: {
-                fontWeight: 'normal',
-              },
-            }}
-          />
-          <Stack.Screen
-            name="Reservation"
-            component={Reservation}
-            options={{
-              // headerShown: false,
-              headerStyle: {
-                backgroundColor: '#d92027',
-              },
-              headerTintColor: '#ffcd3c',
-              headerTitleStyle: {
-                fontWeight: 'normal',
-              },
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <StatusBar backgroundColor="#d92027" barStyle="light-content" />
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Club"
+              component={Club}
+              options={{
+                headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#2d132c',
+                },
+                headerTintColor: '#ee4540',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="ClubInfo"
+              component={ClubInfo}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Table"
+              component={Table}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Select"
+              component={Select}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Gnjoy"
+              children={this.createBottomTabs}
+              options={{
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerLeft: () => (
+                  <Icon
+                    style={[{color: '#ffcd3c', margin: 25}]}
+                    size={20}
+                    name={'navicon'}
+                  />
+                ),
+                headerRight: () => (
+                  <Icon
+                    style={[{color: '#ffcd3c', margin: 25}]}
+                    size={20}
+                    name={'shopping-basket'}
+                    // onPress={() => {
+                    //   console.log('logout pressed');
+                    //   fire
+                    //     .auth()
+                    //     .signOut()
+                    //     .then(
+                    //       () => this.props.navigation.navigate('Welcome'),
+                    //       console.log('User signed out!'),
+                    //     );
+                    // }}
+                  />
+                ),
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Reservation"
+              component={Reservation}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     );
   }
 }

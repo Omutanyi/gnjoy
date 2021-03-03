@@ -8,7 +8,10 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import axios from 'axios';
+// import axios from 'axios';
+
+import {connect} from 'react-redux';
+import {fetchDrinksMenu} from 'gnjoy/src/actions/proceedActions.js';
 
 const {width: WIDTH} = Dimensions.get('window');
 const BaseUrl = 'http://192.168.0.16:8000';
@@ -24,18 +27,19 @@ class Drinks extends Component {
   }
 
   componentDidMount() {
-    console.log('club drink..', this.state.club);
-    axios
-      .get(
-        `http://192.168.0.16:8000/club/searchdrinksmenu/${this.state.club.club_id}`,
-      )
-      .then((res) => {
-        const menus = res.data;
-        this.setState({menu: menus});
-      })
-      .catch((error) => {
-        console.log('Error fetching doc', error);
-      });
+    //   console.log('club drink..', this.state.club);
+    //   axios
+    //     .get(
+    //       `http://192.168.0.16:8000/club/searchdrinksmenu/${this.state.club.club_id}`,
+    //     )
+    //     .then((res) => {
+    //       const menus = res.data;
+    //       this.setState({menu: menus});
+    //     })
+    //     .catch((error) => {
+    //       console.log('Error fetching doc', error);
+    //     });
+    this.props.fetchDrinksMenu();
   }
 
   render() {
@@ -44,7 +48,7 @@ class Drinks extends Component {
       <ScrollView style={styles.primaryView}>
         <View style={styles.container}>
           <Text style={styles.headerMainText}>DRINKS MENUS</Text>
-          {this.state.menu.map((data, index) => (
+          {this.props.menu.map((data, index) => (
             <TouchableWithoutFeedback
               key={index}
               // onPress={() =>
@@ -120,4 +124,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Drinks;
+const mapStateToProps = (state) => ({
+  menu: state.drinksMenu.items,
+});
+
+export default connect(mapStateToProps, {fetchDrinksMenu})(Drinks);
