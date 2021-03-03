@@ -12,6 +12,8 @@ import Select from 'gnjoy/src/screens/Select.js';
 import Drinks from 'gnjoy/src/screens/Drinks.js';
 import Foods from 'gnjoy/src/screens/Foods.js';
 import Menu from 'gnjoy/src/screens/Menu.js';
+import Login from 'gnjoy/src/screens/Login.js';
+import Signup from 'gnjoy/src/screens/Signup.js';
 
 // navigation import
 import {NavigationContainer} from '@react-navigation/native';
@@ -66,6 +68,36 @@ class App extends Component {
         <NavigationContainer>
           <StatusBar backgroundColor="#d92027" barStyle="light-content" />
           <Stack.Navigator>
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Signup"
+              component={Signup}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
             <Stack.Screen
               name="Club"
               component={Club}
