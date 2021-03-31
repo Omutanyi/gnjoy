@@ -14,6 +14,8 @@ import Foods from 'gnjoy/src/screens/Foods.js';
 import Menu from 'gnjoy/src/screens/Menu.js';
 import Login from 'gnjoy/src/screens/Login.js';
 import Signup from 'gnjoy/src/screens/Signup.js';
+import Welcome from 'gnjoy/src/screens/Welcome.js';
+import Product from 'gnjoy/src/screens/Product.js';
 
 // navigation import
 import {NavigationContainer} from '@react-navigation/native';
@@ -69,6 +71,21 @@ class App extends Component {
           <StatusBar backgroundColor="#d92027" barStyle="light-content" />
           <Stack.Navigator>
             <Stack.Screen
+              name="Welcome"
+              component={Welcome}
+              options={{
+                headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
               name="Login"
               component={Login}
               options={{
@@ -120,6 +137,7 @@ class App extends Component {
                 headerStyle: {
                   backgroundColor: '#d92027',
                 },
+                headerTitleAlign: 'center',
                 headerTintColor: '#ffcd3c',
                 headerTitleStyle: {
                   fontWeight: 'normal',
@@ -134,6 +152,7 @@ class App extends Component {
                 headerStyle: {
                   backgroundColor: '#d92027',
                 },
+                headerTitleAlign: 'center',
                 headerTintColor: '#ffcd3c',
                 headerTitleStyle: {
                   fontWeight: 'normal',
@@ -148,6 +167,7 @@ class App extends Component {
                 headerStyle: {
                   backgroundColor: '#d92027',
                 },
+                headerTitleAlign: 'center',
                 headerTintColor: '#ffcd3c',
                 headerTitleStyle: {
                   fontWeight: 'normal',
@@ -208,6 +228,21 @@ class App extends Component {
               }}
             />
             <Stack.Screen
+              name="Product"
+              component={Product}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
               name="Reservation"
               component={Reservation}
               options={{
@@ -215,6 +250,7 @@ class App extends Component {
                 headerStyle: {
                   backgroundColor: '#d92027',
                 },
+                headerTitleAlign: 'center',
                 headerTintColor: '#ffcd3c',
                 headerTitleStyle: {
                   fontWeight: 'normal',

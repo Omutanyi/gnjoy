@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 const {width: WIDTH} = Dimensions.get('window');
-const BaseUrl = 'http://192.168.0.16:8000';
+const BaseUrl = 'http://192.168.0.101:8000';
 
 class ClubInfo extends Component {
   constructor(props) {

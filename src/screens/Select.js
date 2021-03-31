@@ -44,8 +44,7 @@ class Select extends Component {
             source={{uri: BaseUrl + this.state.data.logo}}
           /> */}
           <Text style={styles.cardText}>
-            Thank you Jeff for choosing to party with us at{' '}
-            {this.state.club.name}
+            Thank you for choosing to party with us at {this.state.club.name}
           </Text>
           <Text style={styles.cardText}>
             You have selected the table {this.state.table.table_name}

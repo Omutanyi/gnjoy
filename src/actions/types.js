@@ -2,3 +2,4 @@ export const FETCH_DRINKS_MENU = 'FETCH_DRINKS_MENU';
 export const FETCH_FOODS_MENU = 'FETCH_FOODS_MENU';
 export const ENTER_CLUB = 'ENTER_CLUB';
 export const SELECTED_TABLE = 'SELECTED_TABLE';
+export const ADDED_TO_CART = 'ADDED_TO_CART';

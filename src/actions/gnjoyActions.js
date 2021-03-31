@@ -3,13 +3,14 @@ import {
   ENTER_CLUB,
   FETCH_FOODS_MENU,
   SELECTED_TABLE,
+  ADDED_TO_CART,
 } from 'gnjoy/src/actions/types.js';
 import axios from 'axios';
 
 export function fetchDrinksMenu() {
   return function (dispatch) {
     axios
-      .get(`http://192.168.0.16:8000/club/searchdrinksmenu/2`)
+      .get(`http://192.168.0.101:8000/club/searchdrinksmenu/2`)
       .then((res) =>
         dispatch({
           type: FETCH_DRINKS_MENU,
@@ -25,7 +26,7 @@ export function fetchDrinksMenu() {
 export function fetchFoodsMenu() {
   return function (dispatch) {
     axios
-      .get(`http://192.168.0.16:8000/club/searchfoodsmenu/2`)
+      .get(`http://192.168.0.101:8000/club/searchfoodsmenu/2`)
       .then((res) =>
         dispatch({
           type: FETCH_FOODS_MENU,
@@ -51,5 +52,13 @@ export const selectTable = (table) => (dispatch) => {
   dispatch({
     type: SELECTED_TABLE,
     payload: table,
+  });
+};
+
+export const addToCart = (product) => (dispatch) => {
+  console.log('Product added to cart...', product);
+  dispatch({
+    type: ADDED_TO_CART,
+    payload: product,
   });
 };

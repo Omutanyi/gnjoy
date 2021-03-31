@@ -3,6 +3,7 @@ import {
   ENTER_CLUB,
   FETCH_FOODS_MENU,
   SELECTED_TABLE,
+  ADDED_TO_CART,
 } from 'gnjoy/src/actions/types.js';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   foodsMenu: [],
   club: [],
   table: [],
+  cart: [],
 };
 
 export default function (state = initialState, action) {
@@ -33,6 +35,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         table: action.payload,
+      };
+    case ADDED_TO_CART:
+      return {
+        ...state,
+        cart: action.payload,
       };
     default:
       return state;

@@ -175,7 +175,7 @@ const loginStyle = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#C8E6C9',
+    backgroundColor: '#FEF2F2',
   },
   signupBtn: {
     // backgroundColor: 'grey',

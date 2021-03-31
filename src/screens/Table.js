@@ -25,7 +25,7 @@ class Table extends Component {
   componentDidMount() {
     axios
       .get(
-        `http://192.168.0.16:8000/club/searchtable/${this.state.club.club_id}`,
+        `http://192.168.0.101:8000/club/searchtable/${this.state.club.club_id}`,
       )
       .then((res) => {
         const tables = res.data;

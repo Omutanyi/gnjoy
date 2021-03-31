@@ -14,7 +14,7 @@ import {connect} from 'react-redux';
 import {fetchFoodsMenu} from 'gnjoy/src/actions/gnjoyActions.js';
 
 const {width: WIDTH} = Dimensions.get('window');
-const BaseUrl = 'http://192.168.0.16:8000';
+const BaseUrl = 'http://192.168.0.101:8000';
 
 class Foods extends Component {
   componentDidMount() {

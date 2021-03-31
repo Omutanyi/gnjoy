@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 
 const {width: WIDTH} = Dimensions.get('window');
-const BaseUrl = 'http://192.168.0.16:8000';
+const BaseUrl = 'http://192.168.0.101:8000';
 
 class Club extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Club extends Component {
 
   async componentDidMount() {
     axios
-      .get('http://192.168.0.16:8000/club/')
+      .get('http://192.168.0.101:8000/club/')
       // .then(res => res.json())
       .then((res) => {
         const clubs = res.data;
@@ -43,7 +43,7 @@ class Club extends Component {
       <ScrollView style={styles.primaryView}>
         <View style={styles.headerView}>
           <Text style={styles.headerMainText}>CLUBS</Text>
-          <Text style={styles.headerText}>Happy partying Jeff</Text>
+          <Text style={styles.headerText}>Happy partying</Text>
           <Text style={styles.searchText}>
             Search for your club of choise below
           </Text>

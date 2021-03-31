@@ -24,7 +24,9 @@ class Signup extends Component {
     this.state = {
       isAuthenticated: false,
       username: '',
-      // phone: '',
+      first_name: '',
+      last_name: '',
+      phone: '',
       email: '',
       password: '',
       passwordConfirm: '',
@@ -37,9 +39,12 @@ class Signup extends Component {
     let email = this.state.email;
     let password = this.state.password;
     let passwordConfirm = this.state.passwordConfirm;
+    let first_name = this.state.first_name;
+    let last_name = this.state.last_name;
+    let phone = this.state.phone;
 
     if (password === '' || email === '' || passwordConfirm === '') {
-      console.log('empty');
+      console.log('empty submit');
       Alert.alert(
         'Input Error',
         'Make sure to fill in all the input fields to proceed',
@@ -59,41 +64,44 @@ class Signup extends Component {
       } else {
           auth()
           .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        //   .then(() => {
-        //     // post to postgres
-        //     auth().onAuthStateChanged(user => {
-        //       if (user) {
-        //         // User logged in already or has just logged in.
-        //         console.log(user.uid);
-        //         let userid = user.uid;
-        //         const newUser = {
-        //           username: username,
-        //           user: userid,
-        //           email: email,
-        //         };
-        //         axios
-        //           .post('http://192.168.43.77:8000/users/', newUser)
-        //           .then(response =>
-        //             console.log('postUserId:', response.data.id),
-        //           )
-        //           .catch(error => {
-        //             // this.setState({ errorMessage: error.message });
-        //             console.error('There was an error!', error);
-        //           });
-        //       } else {
-        //         // User not logged in or has just logged out.
-        //         Alert.alert(
-        //           'Signup Error',
-        //           'There was a problem creating your account, Try again later',
-        //           [
-        //             {
-        //               Text: 'Okay',
-        //             },
-        //           ],
-        //         );
-        //       }
-        //     });
-        //   })
+          .then(() => {
+            // post to postgres
+            auth().onAuthStateChanged(user => {
+              if (user) {
+                // User logged in already or has just logged in.
+                console.log(user.uid);
+                let userid = user.uid;
+                const newUser = {
+                  username: first_name,
+                  first_name: first_name,
+                  last_name: last_name,
+                  // phone: phone,
+                  user: userid,
+                  email: email,
+                };
+                axios
+                  .post('http://192.168.0.101:8000/users/', newUser)
+                  .then(response =>
+                    console.log('postUserId:', response.data.id),
+                  )
+                  .catch(error => {
+                    // this.setState({ errorMessage: error.message });
+                    console.error('There was an error!', error);
+                  });
+              } else {
+                // User not logged in or has just logged out.
+                Alert.alert(
+                  'Signup Error',
+                  'There was a problem creating your account, Try again later',
+                  [
+                    {
+                      Text: 'Okay',
+                    },
+                  ],
+                );
+              }
+            });
+          })
           .then(() => {
             console.log('signup enabled');
             Alert.alert(
@@ -129,17 +137,28 @@ class Signup extends Component {
   render() {
     return (
       <View style={signupStyles.primaryView}>
+      <Text style={signupStyles.primaryHeader}>JOIN GNJOY TODAY!!</Text>
         <Text style={signupStyles.primaryText}>
-          Enjoy the best of land deals all fitted to your budget. Fill in the
+          Fill in the
           fields to create an account.
         </Text>
         <TextInput
           style={signupStyles.input}
-          placeholder={'Username'}
-          value={this.state.username}
+          placeholder={'first_name'}
+          value={this.state.first_name}
           placeholderTextColor={'black'}
           onChangeText={(text) => {
-              this.setState({username: text});
+              this.setState({first_name: text});
+            }}
+          underlineColorAndroid="transparent"
+        />
+        <TextInput
+          style={signupStyles.input}
+          placeholder={'last_name'}
+          value={this.state.last_name}
+          placeholderTextColor={'black'}
+          onChangeText={(text) => {
+              this.setState({last_name: text});
             }}
           underlineColorAndroid="transparent"
         />
@@ -191,12 +210,19 @@ const signupStyles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FEF2F2',
   },
+  primaryHeader: {
+    alignSelf: 'center',
+    color: '#d92027',
+    fontWeight: '600',
+    fontSize: 17,
+    padding: 10,
+  },
   primaryText: {
     alignSelf: 'center',
     color: '#757575',
     fontWeight: '100',
     fontSize: 13,
-    padding: 20,
+    // padding: 20,
   },
   input: {
     width: WIDTH - 100,

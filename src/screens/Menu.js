@@ -16,7 +16,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 const {width: WIDTH} = Dimensions.get('window');
-const BaseUrl = 'http://192.168.0.16:8000';
+const BaseUrl = 'http://192.168.0.101:8000';
 
 class Menu extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class Menu extends Component {
   async componentDidMount() {
     axios
       .get(
-        `http://192.168.0.16:8000/club/searchdrink/${this.state.mainMenu.drinks_menu_id}`,
+        `http://192.168.0.101:8000/club/searchdrink/${this.state.mainMenu.drinks_menu_id}`,
       )
       // .then(res => res.json())
       .then((res) => {
@@ -56,10 +56,9 @@ class Menu extends Component {
           {this.state.menuItems.map((data, index) => (
             <TouchableWithoutFeedback
               key={index}
-              //   onPress={() =>
-              //     this.props.navigation.navigate('ClubInfo', {clubData: data})
-              //   }
-            >
+              onPress={() =>
+                this.props.navigation.navigate('Product', {product: data})
+              }>
               <View style={styles.clubCard}>
                 <Image
                   style={styles.clubLogo}
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
   cardText: {
     // marginLeft: 10,
     fontWeight: 'normal',
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: 'Tisa',
     color: 'green',
   },
