@@ -16,11 +16,13 @@ import Login from 'gnjoy/src/screens/Login.js';
 import Signup from 'gnjoy/src/screens/Signup.js';
 import Welcome from 'gnjoy/src/screens/Welcome.js';
 import Product from 'gnjoy/src/screens/Product.js';
+import Cart from 'gnjoy/src/screens/Cart.js';
 
 // navigation import
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 //icons import
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -31,6 +33,7 @@ import store from 'gnjoy/src/store.js';
 
 const Stack = createStackNavigator();
 const gnjoyTabs = createMaterialBottomTabNavigator();
+const gnjoyDrawer = createDrawerNavigator();
 
 class App extends Component {
   createBottomTabs = () => {
@@ -64,6 +67,22 @@ class App extends Component {
       </gnjoyTabs.Navigator>
     );
   };
+
+  DrawerNavigator = () => {
+    return (
+      <gnjoyDrawer.Navigator>
+        <gnjoyDrawer.Screen
+          name="Select"
+          component={Select}
+          // options={{
+          //   tabBarIcon: () => (
+          //     <Icon style={[{color: '#d92027'}]} size={20} name={'cutlery'} />
+          //   ),
+          // }}
+        />
+      </gnjoyDrawer.Navigator>
+    );
+  };
   render() {
     return (
       <Provider store={store}>
@@ -87,6 +106,7 @@ class App extends Component {
             />
             <Stack.Screen
               name="Login"
+              // children={this.DrawerNavigator}
               component={Login}
               options={{
                 // headerShown: false,
@@ -230,6 +250,21 @@ class App extends Component {
             <Stack.Screen
               name="Product"
               component={Product}
+              options={{
+                // headerShown: false,
+                headerStyle: {
+                  backgroundColor: '#d92027',
+                },
+                headerTitleAlign: 'center',
+                headerTintColor: '#ffcd3c',
+                headerTitleStyle: {
+                  fontWeight: 'normal',
+                },
+              }}
+            />
+            <Stack.Screen
+              name="Cart"
+              component={Cart}
               options={{
                 // headerShown: false,
                 headerStyle: {

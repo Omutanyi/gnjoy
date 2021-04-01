@@ -11,6 +11,10 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+//redux imports
+import {connect} from 'react-redux';
+import {addToCart} from 'gnjoy/src/actions/gnjoyActions.js';
+
 const {width: WIDTH} = Dimensions.get('window');
 const BaseUrl = 'http://192.168.0.101:8000';
 
@@ -45,6 +49,12 @@ class Product extends Component {
   addToCart = () => {
     // add product
     // add item count
+    const productToAdd = {
+      product: this.state.product,
+      productCount: this.state.itemsCount,
+    };
+    console.log('product added...', productToAdd);
+    this.props.addToCart(productToAdd);
   };
 
   render() {
@@ -92,12 +102,8 @@ class Product extends Component {
           </View>
           <TouchableOpacity
             style={styles.addBtn}
-            // onPress={() => this.checkinOptions()}
-          >
-            <Text style={styles.btnText}>
-              {/* FEF2F2<Icon name="cart-plus" size={20} color="#FEF2F2" right={10} /> */}
-              ADD TO CART
-            </Text>
+            onPress={() => this.addToCart()}>
+            <Text style={styles.btnText}>ADD TO CART</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -225,4 +231,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Product;
+// const mapStateToProps = (state) => ({
+//   menu: state.drinksMenu.drinksMenu,
+//   club: state.club.club,
+// });
+
+export default connect(null, {addToCart})(Product);
